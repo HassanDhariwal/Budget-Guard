@@ -1,2 +1,5 @@
 class Article < ApplicationRecord
+
+		
 end
+
