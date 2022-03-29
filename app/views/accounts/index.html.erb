@@ -1,0 +1,12 @@
+<h1>Accounts</h1>
+<ul>
+  <% @accounts.each do |account| %>
+    <li>
+      <%= account.name %>
+      <%= account.account_type %>
+      <%= account.amount %>
+      <%= account.currency %>
+      <%= account.color %>
+    </li>
+  <% end %>
+</ul>

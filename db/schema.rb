@@ -10,16 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_26_095705) do
+ActiveRecord::Schema.define(version: 2022_03_27_104057) do
 
-  create_table "articles", force: :cascade do |t|
+  create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.string "account_type"
+    t.integer "amount"
+    t.string "currency"
+    t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "articles", charset: "utf8mb3", force: :cascade do |t|
     t.string "title"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

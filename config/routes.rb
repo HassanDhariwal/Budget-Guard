@@ -1,10 +1,26 @@
 Rails.application.routes.draw do
+  get 'accounts/index'
+  # devise 
   devise_for :users
-  
-  get 'articles/new'
+  # Articels 
   get 'articles/about'
-  root "articles#index"
-  resources :articles
-
-
+  resources :articles do
+  get 'import', :on => :collection
 end
+  root "articles#index"
+end
+     
+
+
+
+  # get 'import', :on => :member
+  # get 'import2', :on => :member
+  # collection do
+  #   get 'categoryshow'
+  # end
+
+  # member do
+  #   get 'categoryshow'
+  #   get 'Import'
+  # end
+

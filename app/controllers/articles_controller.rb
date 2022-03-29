@@ -8,7 +8,11 @@ class ArticlesController < ApplicationController
   
   end
 
-
+  def import
+  
+    # binding.pry 
+  render "articles/about"
+  end
 
 end
 
