@@ -6,11 +6,14 @@ Rails.application.routes.draw do
   get 'articles/about'
   resources :articles do
   get 'import', :on => :collection
-end
-  root "articles#index"
-end
-     
+  end
 
+  root to: 'articles#index'
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
+     
+end
 
 
   # get 'import', :on => :member
