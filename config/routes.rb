@@ -7,12 +7,10 @@ Rails.application.routes.draw do
   resources :articles do
   get 'import', :on => :collection
   end
-
   root to: 'articles#index'
   # devise_scope :user do
   #   root to: "devise/sessions#new"
   # end
-     
 end
 
 
