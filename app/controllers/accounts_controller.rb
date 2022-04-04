@@ -1,7 +1,10 @@
 class AccountsController < ApplicationController
   
   def index
-    @accounts= Account.all
+    # @accounts= Account.all
+    # current_user.accounts
+    # (simple jo user login ha is ka data show ho )
+     @accounts= current_user.accounts
   end
 
   def show
@@ -15,6 +18,7 @@ class AccountsController < ApplicationController
 
   def create
     @accounts = Account.new(account_params)
+    # @accounts.color = "Black"
 
     if @accounts.save
       redirect_to action: "index"
@@ -24,9 +28,9 @@ class AccountsController < ApplicationController
   end
 
   def edit
-      @accounts = Account.find(params[:id])
+      @account = Account.find(params[:id])
   end
-
+    # binding.pry
   def update
       @accounts = Account.find(params[:id])
       if @accounts.update(account_params)
@@ -46,7 +50,7 @@ class AccountsController < ApplicationController
 
   private
     def account_params
-      params.require(:account).permit(:name, :account_type, :amount, :currency )
+      params.require(:account).permit(:name, :account_type, :amount, :currency, :user_id)
     end
   end
 

@@ -30,6 +30,11 @@
     <%= form.text_field :currency %>
   </div>
 
+  <div class="field form-group">
+      <%= form.number_field :user_id, id: :account_user_id,value:current_user.id, type: :hidden %>
+<!--    number_field add number counting -->
+  </div>
+
   <div type="button" class="btn btn-success">
     <%= form.submit %>
   </div>
