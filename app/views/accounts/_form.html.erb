@@ -1,0 +1,36 @@
+
+
+<%= form_with model: accounts do |form| %>
+
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% accounts.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+
+  </div>
+
+  <div>
+    <%= form.label :account_type %><br>
+    <%= form.text_field :account_type %>
+    <% accounts.errors.full_messages_for(:account_type).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+
+  </div>
+
+  <div>
+    <%= form.label :amount %><br>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :currency %><br>
+    <%= form.text_field :currency %>
+  </div>
+
+  <div type="button" class="btn btn-success">
+    <%= form.submit %>
+  </div>
+<% end %>

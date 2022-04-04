@@ -1,12 +1,43 @@
 <h1>Accounts</h1>
-<ul>
-  <% @accounts.each do |account| %>
-    <li>
-      <%= account.name %>
-      <%= account.account_type %>
-      <%= account.amount %>
-      <%= account.currency %>
-      <%= account.color %>
-    </li>
-  <% end %>
-</ul>
+
+<table class="table table-hover">
+  <thead class="table-dark">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">NAME</th>
+    <th scope="col">TYPE</th>
+    <th scope="col">CURRENCEY</th>
+    <th scope="col">Amount</th>
+    <th scope="col">ACTIONS</th>
+  </tr>
+  </thead>
+
+
+<% @accounts.each do |account| %>
+  <div class="field">
+
+<!--    <#= link_to account.name, account %>-->
+<!--    #how to link href  -->
+    <tbody>
+    <tr>
+      <th scope="row"><%= account.id  %></th>
+      <td><%= account.name %></td>
+      <td><%= account.account_type %></td>
+      <td><%= account.currency %></td>
+      <td><%= account.amount %></td>
+<!--      here we define account.id and bacause this provide to edit and delete -->
+      <td>
+        <%= link_to "Show", account_path(account.id), class: "btn btn-success" %>
+        <%= link_to "Edit", edit_account_path(account.id), class: "btn btn-primary" %>
+        <%= link_to "Delete", account_path(account.id), class: "btn btn-danger" ,data: {
+            turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
+      </td>
+
+    </tr>
+    </tbody>
+  </div>
+<% end %>
+</table>
+
+
+<%= link_to "+ Add account", new_account_path, class: "btn btn-primary" %>

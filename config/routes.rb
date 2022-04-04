@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'accounts/index'
+  resources :accounts
+  
   # devise 
   devise_for :users
   # Articels 
@@ -17,6 +18,7 @@ end
   # get 'import', :on => :member
   # get 'import2', :on => :member
   # collection do
+
   #   get 'categoryshow'
   # end
 
