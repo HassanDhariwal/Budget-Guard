@@ -11,13 +11,13 @@
   </thead>
   <tbody>
   <tr>
-    <td><%= @accounts.name%></td>
-    <td><%= @accounts.account_type%></td>
-    <td><%= @accounts.amount%></td>
-    <td><%= @accounts.currency%></td>
-    <td><%= link_to "Edit", edit_account_path(@accounts.id),  class: "btn btn-primary" %>
+    <td><%= @account.name%></td>
+    <td><%= @account.account_type%></td>
+    <td><%= @account.amount%></td>
+    <td><%= @account.currency%></td>
+    <td><%= link_to "Edit", edit_account_path(@account.id),  class: "btn btn-primary" %>
 <!--      patch for a specific line add, DELETE but there path is account-->
-      <%= link_to "Delete", account_path(@accounts.id),class: "btn btn-danger",data: {
+      <%= link_to "Delete", account_path(@account.id),class: "btn btn-danger",data: {
           turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
     </td>
   </tr>

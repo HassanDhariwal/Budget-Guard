@@ -3,24 +3,23 @@ class AccountsController < ApplicationController
   def index
     # @accounts= Account.all
     # current_user.accounts
-    # (simple jo user login ha is ka data show ho )
+    # (simple jo user login ha is ka data show)
      @accounts= current_user.accounts
   end
 
   def show
-    @accounts = Account.find(params[:id])
+    @account = Account.find(params[:id])
   end
 
   def new
-    @accounts = Account.new
-    # @accounts = Account.new(type:params[:type], currenty:)accounts
+    @account = Account.new
   end
 
   def create
-    @accounts = Account.new(account_params)
-    # @accounts.color = "Black"
+    @account = Account.new(account_params)
+    # @account.color = "Black"
 
-    if @accounts.save
+    if @account.save
       redirect_to action: "index"
     else
       render :new, status: :unprocessable_entity
@@ -32,8 +31,8 @@ class AccountsController < ApplicationController
   end
     # binding.pry
   def update
-      @accounts = Account.find(params[:id])
-      if @accounts.update(account_params)
+      account = Account.find(params[:id])
+      if account.update(account_params)
         redirect_to action: "index"
       else
         render :edit, status: :unprocessable_entity
@@ -41,8 +40,8 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @accounts = Account.find(params[:id])
-    @accounts.destroy
+    account = Account.find(params[:id])
+    account.destroy
     #redirect_to action: "index" menes proivide root ab wapis index per chala jay
     redirect_to action: "index", :notice => "Account record deleted"
   end
