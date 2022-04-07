@@ -10,6 +10,7 @@ class RecodesController < ApplicationController
 
   def new
     @recode = Recode.new
+    @accounts = current_user.accounts
   #  @recode varibel hi used hoga na ky `recodes` form <%= form_with model: @recodes do |form| %>
   end
 
@@ -27,6 +28,7 @@ class RecodesController < ApplicationController
 
   def edit
     @recode = Recode.find(params[:id])
+    @accounts = current_user.accounts
   end
   # binding.pry
   def update
