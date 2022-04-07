@@ -1,0 +1,34 @@
+<!--table class="table table-hover">-->
+<table class="table table-success">
+  <thead class="table-dark">
+    <tr>
+
+      <th scope="col">Category</th>
+      <th scope="col">Recode_type</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Account ID</th>
+      <th scope="col">date</th>
+      <th scope="col">time</th>
+      <th scope="col">Note</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @recode.category %></td>
+      <td><%= @recode.recode_type %></td>
+      <td><%= @recode.amount %></td>
+      <td><%= @recode.account_id %></td>
+      <td><%= @recode.date%></td>
+      <td><%= @recode.time %></td>
+      <td><%= @recode.note %></td>
+
+      <!--      here we define account.id and bacause this provide to edit and delete -->
+      <td>
+        <%= link_to "Edit", edit_recode_path(@recode.id), class: "btn btn-primary" %>
+        <%= link_to "Delete", recode_path(@recode.id), class: "btn btn-danger" ,data: {
+        turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
+      </td>
+    </tr>
+  </tbody>
+</table>

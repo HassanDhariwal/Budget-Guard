@@ -1,53 +1,6 @@
+<h1>Recode</h1>
 
-<table class="table table-success">
-  <thead class="table-dark">
-  <tr>
-    <th scope="col">Name</th>
-    <th scope="col">Type</th>
-    <th scope="col">Amount</th>
-    <th scope="col">currency</th>
-    <th scope="col">Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><%= @account.name%></td>
-    <td><%= @account.account_type%></td>
-    <td><%= @account.amount%></td>
-    <td><%= @account.currency%></td>
-    <td><%= link_to "Edit", edit_account_path(@account.id),  class: "btn btn-primary" %>
-<!--      patch for a specific line add, DELETE but there path is account-->
-      <%= link_to "Delete", account_path(@account.id),class: "btn btn-danger",data: {
-          turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
-    </td>
-  </tr>
-  </tbody>
-</table>
-
-<h1>Account details</h1>
-
-<table class="table table-success">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Account balance</th>
-        <th scope="col">starting_balacne</th>
-        <th scope="col">income</th>
-        <th scope="col">expence</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @account_balance%></td>
-        <td><%= @account.amount%></td>
-        <td><%= @credit_amount%></td>
-        <td><%= @debit_amount%></td>
-      </tr>
-    </tbody>
-</table>
-<h1>Account Recodes</h1>
-
-<table class="table table-success">
+<table class="table table-hover">
   <thead class="table-dark">
   <tr>
     <th scope="col">ID</th>
@@ -59,6 +12,8 @@
     <th scope="col">time</th>
     <th scope="col">Note</th>
     <th scope="col">Action</th>
+
+
   </tr>
   </thead>
   <% @recodes.each do |recode| %>
@@ -89,5 +44,12 @@
   <% end %>
 </table>
 
+<%= link_to "+ Add Recode", new_recode_path, class: "btn btn-primary" %>
 
+<!-- Sidebar -->
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
+  <a href="#" class="w3-bar-item w3-button">Account</a>
+  <a href="#" class="w3-bar-item w3-button">category</a>
+  <a href="#" class="w3-bar-item w3-button">label</a>
+</div>
 

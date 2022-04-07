@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   resources :accounts
-  
-  # devise 
+  resources :recodes
+
+  # devise
   devise_for :users
-  # Articels 
+  # Articels
   get 'articles/about'
   resources :articles do
   get 'import', :on => :collection

@@ -9,6 +9,32 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
+    @recodes = @account.recodes
+    # =================================
+
+
+    @credit_amount  = 0
+    @debit_amount = 0
+    total_amount = 0
+    @recodes.each do |recode|
+      puts "record_id #{recode.id}"
+      puts "amount #{recode.amount}" #tb used kerty hn jb string my rekh vana ho
+      total_amount =  total_amount + recode.amount
+      if  recode.recode_type == "income"
+        @credit_amount  = @credit_amount +  recode.amount
+
+      elsif recode.recode_type == "expence"
+
+        @debit_amount  = @debit_amount + recode.amount
+      end
+
+    end
+    puts "total_amount #{total_amount}"
+
+    # =================================
+    @starting_balacne = @account.amount
+    @account_balance = (@starting_balacne + @credit_amount) - @debit_amount
+  #  @recodes = @account.recodes account kya data ko recodes main show ker vaya
   end
 
   def new
@@ -46,12 +72,11 @@ class AccountsController < ApplicationController
     redirect_to action: "index", :notice => "Account record deleted"
   end
 
-
   private
-    def account_params
-      params.require(:account).permit(:name, :account_type, :amount, :currency, :user_id)
-    end
+  def account_params
+    params.require(:account).permit(:name, :account_type, :amount, :currency, :user_id)
   end
+end
 
 
 

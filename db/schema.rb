@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_04_162216) do
+ActiveRecord::Schema.define(version: 2022_04_06_101945) do
 
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(version: 2022_04_04_162216) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recodes", charset: "utf8mb3", force: :cascade do |t|
+    t.string "recode_type"
+    t.text "category"
+    t.integer "amount"
+    t.integer "date"
+    t.integer "time"
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_recodes_on_account_id"
   end
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
