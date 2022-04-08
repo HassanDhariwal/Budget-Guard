@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :accounts
+  resources :accounts do
+    collection { post :import }
+  end
   resources :recodes
 
   # devise

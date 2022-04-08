@@ -72,6 +72,37 @@ class AccountsController < ApplicationController
     redirect_to action: "index", :notice => "Account record deleted"
   end
 
+  def import
+    # file =  File.read('/home/hassan/Downloads/meezan/AccountFullStatement.CSV')
+    @accounts = current_user.accounts
+    account_id = params[:account_id]
+
+    file = params[:file]
+    csv = File.read(file)
+
+    CSV.parse(csv, headers: true).each do |row|
+
+      recode_type = ""
+      amount = 0
+
+      if row["Debit"].present?
+      recode_type = "expence"
+       amount = row["Debit"]
+      elsif row["Credit"].present?
+        recode_type = "income"
+        amount = row["Credit"]
+      end
+
+      # row = Recode.new(date_time: row["Transaction"],note: row["Description"], amount: amount, account_id: account_id,recode_type: recode_type )
+      Recode.create(date_time: row["Transaction"],note: row["Description"], amount: amount, account_id: account_id,recode_type: recode_type )
+      end
+
+    # Record.new(asdfs,sdf, acount_id: account_id)
+
+
+    redirect_to action: "index", notice: "Products imported."
+  end
+
   private
   def account_params
     params.require(:account).permit(:name, :account_type, :amount, :currency, :user_id)

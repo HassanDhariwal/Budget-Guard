@@ -19,8 +19,7 @@ class RecodesController < ApplicationController
     # @account.color = "Black"
 
     if @recode.save
-      redirect_to action: "index"
-
+      redirect_to action: "index", controller: "accounts"
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +33,7 @@ class RecodesController < ApplicationController
   def update
     recode = Recode.find(params[:id])
     if recode.update(recode_params)
-      redirect_to action: "index"
+      redirect_to action: "index", controller: "accounts"
     else
       render :edit, status: :unprocessable_entity
     end

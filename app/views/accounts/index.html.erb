@@ -9,6 +9,7 @@
     <th scope="col">CURRENCEY</th>
     <th scope="col">Amount</th>
     <th scope="col">USER ID</th>
+    <th scope="col"> No of Records</th>
     <th scope="col">ACTIONS</th>
 
   </tr>
@@ -28,6 +29,7 @@
       <td><%= account.currency %></td>
       <td><%= account.amount %></td>
       <td><%= account.user_id %></td>
+      <td><%= account.recodes.count %></td>
 <!--      here we define account.id and bacause this provide to edit and delete -->
       <td>
         <%= link_to "Show", account_path(account.id), class: "btn btn-success" %>
