@@ -47,9 +47,13 @@ class RecodesController < ApplicationController
     redirect_to action: "index", :notice => "Account record deleted"
   end
 
+    # file = File.read('/home/hassan/Downloads/meezan/AccountFullStatement.CSV')
+  # exit
+  # exit! (exit from looop)
+
   private
   def recode_params
-    params.require(:recode).permit(:category, :recode_type, :amount, :date, :time, :note, :account_id )
+    params.require(:recode).permit(:category, :recode_type, :amount, :date_time, :note, :account_id )
   end
 end
 

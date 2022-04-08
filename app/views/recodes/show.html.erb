@@ -7,8 +7,7 @@
       <th scope="col">Recode_type</th>
       <th scope="col">Amount</th>
       <th scope="col">Account ID</th>
-      <th scope="col">date</th>
-      <th scope="col">time</th>
+      <th scope="col">date time</th>
       <th scope="col">Note</th>
       <th scope="col">Action</th>
     </tr>
@@ -19,8 +18,7 @@
       <td><%= @recode.recode_type %></td>
       <td><%= @recode.amount %></td>
       <td><%= @recode.account_id %></td>
-      <td><%= @recode.date%></td>
-      <td><%= @recode.time %></td>
+      <td><%= @recode.date_time.strftime('%B %e at %l:%M %p')%></td>
       <td><%= @recode.note %></td>
 
       <!--      here we define account.id and bacause this provide to edit and delete -->

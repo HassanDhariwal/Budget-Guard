@@ -35,8 +35,7 @@ ActiveRecord::Schema.define(version: 2022_04_06_101945) do
     t.string "recode_type"
     t.text "category"
     t.integer "amount"
-    t.integer "date"
-    t.integer "time"
+    t.datetime "date_time", precision: 6
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

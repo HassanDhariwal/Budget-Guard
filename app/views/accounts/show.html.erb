@@ -1,4 +1,4 @@
-
+<h3>Account details</h3>
 <table class="table table-success">
   <thead class="table-dark">
   <tr>
@@ -24,7 +24,7 @@
   </tbody>
 </table>
 
-<h1>Account details</h1>
+<h3>Balance details</h3>
 
 <table class="table table-success">
     <thead class="table-dark">
@@ -45,7 +45,9 @@
       </tr>
     </tbody>
 </table>
-<h1>Account Recodes</h1>
+<br>
+
+<h3>Account Recodes</h3>
 
 <table class="table table-success">
   <thead class="table-dark">
@@ -54,13 +56,13 @@
     <th scope="col">Category</th>
     <th scope="col">Recode_type</th>
     <th scope="col">Amount</th>
-    <th scope="col">Account ID</th>
-    <th scope="col">date</th>
-    <th scope="col">time</th>
+    <th scope="col">Account</th>
+    <th scope="col">Date Time</th>
     <th scope="col">Note</th>
     <th scope="col">Action</th>
   </tr>
   </thead>
+  <% unless  @recodes.blank? %>
   <% @recodes.each do |recode| %>
     <div class="field">
       <!--    <#= link_to account.name, account %>-->
@@ -71,9 +73,8 @@
         <td><%= recode.category %></td>
         <td><%= recode.recode_type %></td>
         <td><%= recode.amount %></td>
-        <td><%= recode.account_id %></td>
-        <td><%= recode.date%></td>
-        <td><%= recode.time %></td>
+        <td><%= recode.account.name %></td>
+        <td><%= recode.date_time.strftime('%B %e at %l:%M %p')%></td>
         <td><%= recode.note %></td>
 
         <!--      here we define account.id and bacause this provide to edit and delete -->
@@ -87,7 +88,8 @@
       </tbody>
     </div>
   <% end %>
-</table>
+  <% end %>
+  </table>
 
 
 

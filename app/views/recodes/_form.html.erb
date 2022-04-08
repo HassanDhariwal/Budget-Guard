@@ -2,10 +2,13 @@
 
 <%= form_for  @recode do |form| %>
 
-  <div>
-    <%= form.label :recode_type %><br>
-    <%= form.text_field :recode_type %>
+  <div class="header" >
+    <%= form.radio_button :recode_type, 'income',:checked => true %>
+    <%= form.label :recode_type, 'income' %>
+    <%= form.radio_button :recode_type, 'expence' %>
+    <%= form.label :recode_type, 'expence' %>
   </div>
+
   <div>
     <%= form.label :choose_account %><br>
     <%= form.collection_select :account_id, @accounts.order(:name),:id,:name%>
@@ -17,13 +20,8 @@
   </div>
 
   <div>
-    <%= form.label :date %><br>
-    <%= form.text_field :date %>
-  </div>
-
-  <div>
-    <%= form.label :time %><br>
-    <%= form.text_field :time %>
+    <%= form.label :date_time %><br>
+    <%= form.datetime_field :date_time %>
   </div>
 
   <div>
