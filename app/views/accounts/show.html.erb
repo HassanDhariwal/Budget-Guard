@@ -3,7 +3,7 @@
   <thead class="table-dark">
   <tr>
     <th scope="col">Name</th>
-    <th scope="col">Type</th>
+    <th scope="col">Account Type</th>
     <th scope="col">Amount</th>
     <th scope="col">currency</th>
     <th scope="col">Actions</th>
@@ -52,8 +52,8 @@
 <h3>Import Recode</h3>
 <%= form_tag import_accounts_path, multipart: true do %>
 <%= file_field_tag :file %>
-<%= hidden_field_tag :account_id,@account.id %>
-<%= submit_tag "Import" %>
+<%= hidden_field_tag :account_id,@account.id %><br><br>
+  <button type="submit" class="btn btn-primary"> +Import </button>
 <% end %>
 <br><br>
 <h3>Account Recodes</h3>
@@ -62,11 +62,12 @@
   <thead class="table-dark">
   <tr>
     <th scope="col">ID</th>
-    <th scope="col">Category</th>
+    <th scope="col">Account</th>
     <th scope="col">Recode_type</th>
     <th scope="col">Amount</th>
-    <th scope="col">Account</th>
+
     <th scope="col">Date Time</th>
+    <th scope="col">Category</th>
     <th scope="col">Note</th>
     <th scope="col">Action</th>
   </tr>
@@ -78,12 +79,12 @@
       <!--    #how to link href  -->
       <tbody>
       <tr>
-        <th scope="row"><%= recode.id  %></th>
-        <td><%= recode.category %></td>
+        <td scope="row"><%= recode.id  %></td>
+        <td><%= recode.account.name %></td>
         <td><%= recode.recode_type %></td>
         <td><%= recode.amount %></td>
-        <td><%= recode.account.name %></td>
-        <td><%= recode.date_time.strftime('%B %e at %l:%M %p')%></td>
+        <td><%= recode.date_time&.strftime('%B %e at %l:%M %p')%></td>
+        <td><%= recode.category_id   %></td>
         <td><%= recode.note %></td>
 
         <!--      here we define account.id and bacause this provide to edit and delete -->

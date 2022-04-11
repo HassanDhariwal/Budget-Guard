@@ -11,13 +11,13 @@ class RecodesController < ApplicationController
   def new
     @recode = Recode.new
     @accounts = current_user.accounts
+    @categories = Category.all
   #  @recode varibel hi used hoga na ky `recodes` form <%= form_with model: @recodes do |form| %>
   end
 
   def create
     @recode = Recode.new(recode_params)
     # @account.color = "Black"
-
     if @recode.save
       redirect_to action: "index", controller: "accounts"
     else
@@ -28,6 +28,8 @@ class RecodesController < ApplicationController
   def edit
     @recode = Recode.find(params[:id])
     @accounts = current_user.accounts
+    @categories = Category.all
+
   end
   # binding.pry
   def update
@@ -52,7 +54,7 @@ class RecodesController < ApplicationController
 
   private
   def recode_params
-    params.require(:recode).permit(:category, :recode_type, :amount, :date_time, :note, :account_id )
+    params.require(:recode).permit(:category_id, :recode_type, :amount, :date_time, :note, :account_id )
   end
 end
 

@@ -19,13 +19,13 @@ class AccountsController < ApplicationController
     @recodes.each do |recode|
       puts "record_id #{recode.id}"
       puts "amount #{recode.amount}" #tb used kerty hn jb string my rekh vana ho
-      total_amount =  total_amount + recode.amount
+      total_amount =  total_amount + recode.amount.to_i
       if  recode.recode_type == "income"
-        @credit_amount  = @credit_amount +  recode.amount
+        @credit_amount  = @credit_amount +  recode.amount.to_i
 
       elsif recode.recode_type == "expence"
 
-        @debit_amount  = @debit_amount + recode.amount
+        @debit_amount  = @debit_amount + recode.amount.to_i
       end
 
     end
@@ -44,7 +44,6 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     # @account.color = "Black"
-
     if @account.save
       redirect_to action: "index"
     else
@@ -105,7 +104,7 @@ class AccountsController < ApplicationController
 
   private
   def account_params
-    params.require(:account).permit(:name, :account_type, :amount, :currency, :user_id)
+    params.require(:account).permit(:name, :account_type, :amount, :currency, :user_id).merge("currency": "PKR")
   end
 end
 

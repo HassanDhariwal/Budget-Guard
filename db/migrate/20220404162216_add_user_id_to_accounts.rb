@@ -4,3 +4,4 @@ class AddUserIdToAccounts < ActiveRecord::Migration[7.0]
     add_index :accounts, :user_id
   end
 end
+f

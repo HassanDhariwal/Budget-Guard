@@ -11,30 +11,28 @@
 
   <div>
     <%= form.label :choose_account %><br>
-    <%= form.collection_select :account_id, @accounts.order(:name),:id,:name%>
+    <%= form.collection_select :account_id, @accounts.order(:name),:id,:name, include_blank: 'None'%>
+  </div>
+
+  <div>
+    <%= form.label :choose_category %><br>
+    <%= form.collection_select :category_id, @categories.order(:name),:id,:name, include_blank: 'None' %>
   </div>
 
   <div>
     <%= form.label :amount %><br>
-    <%= form.text_field :amount %>
+    <%= form.text_field :amount, placeholder: "Amount" %>
   </div>
 
   <div>
     <%= form.label :date_time %><br>
-    <%= form.datetime_field :date_time %>
+    <%= form.datetime_field :date_time, placeholder: "Date Time" %>
   </div>
 
   <div>
-    <%= form.label :category %><br>
-      <%= form.text_field :category %>
-  </div>
-<div>
     <%= form.label :note %><br>
-      <%= form.text_field :note %>
+      <%= form.text_field :note , placeholder: "Note" %>
   </div>
+  <button type="submit" class="btn btn-primary"> <%= type %> Recorde</button>
 
-
-  <div type="button" class="btn btn-success">
-    <%= form.submit %>
-  </div>
 <% end %>

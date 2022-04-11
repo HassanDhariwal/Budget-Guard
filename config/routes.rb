@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     collection { post :import }
   end
   resources :recodes
-
+  resources :categories
   # devise
   devise_for :users
   # Articels

@@ -14,11 +14,11 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= @recode.category %></td>
+      <td><%= @recode.category_id %></td>
       <td><%= @recode.recode_type %></td>
       <td><%= @recode.amount %></td>
       <td><%= @recode.account_id %></td>
-      <td><%= @recode.date_time.strftime('%B %e at %l:%M %p')%></td>
+      <td><%= @recode.date_time&.strftime('%B %e at %l:%M %p')%></td>
       <td><%= @recode.note %></td>
 
       <!--      here we define account.id and bacause this provide to edit and delete -->

@@ -1,19 +1,17 @@
 <h1>Recode</h1>
-<%= link_to "+ Add Recode", new_recode_path, class: "btn btn-primary" %>
-<br>
+<th><%= link_to "+ Add Recorde", new_recode_path, class: "btn btn-primary" %></th>
+
 <table class="table table-hover">
-  <thead class="table-dark">
+  <thead class="table table-active	">
   <tr>
     <th scope="col">ID</th>
-    <th scope="col">Category</th>
     <th scope="col">Recode_type</th>
     <th scope="col">Amount</th>
     <th scope="col">Account</th>
+    <th scope="col">Category</th>
     <th scope="col">Date Time</th>
     <th scope="col">Note</th>
     <th scope="col">Action</th>
-
-
   </tr>
   </thead>
   <% @recodes.each do |recode| %>
@@ -21,24 +19,23 @@
       <!--    <#= link_to account.name, account %>-->
       <!--    #how to link href  -->
       <tbody>
-      <tr>
-        <th scope="row"><%= recode.id  %></th>
-        <td><%= recode.category %></td>
-        <td><%= recode.recode_type %></td>
-        <td><%= recode.amount %></td>
-        <td><%= recode.account.name %></td>
-        <td><%= recode.date_time.strftime('%B %e at %l:%M %p')%></td>
-        <td><%= recode.note %></td>
-
+        <tr>
+          <th scope="row"><%= recode.id  %></th>
+          <td><%= recode.recode_type %></td>
+          <td><%= recode.amount %></td>
+          <td><%= recode.account_id %></td>
+          <td><%= recode.category_id %></td>
+          <td><%= recode.date_time&.strftime('%B %e at %l:%M %p')%></td>
+          <td><%= recode.note %></td>
         <!--      here we define account.id and bacause this provide to edit and delete -->
-        <td>
-          <%= link_to "Show", recode_path(recode.id), class: "btn btn-success" %>
-          <%= link_to "Edit", edit_recode_path(recode.id), class: "btn btn-primary" %>
-          <%= link_to "Delete", recode_path(recode.id), class: "btn btn-danger" ,data: {
-              turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
-        </td>
-      </tr>
+          <td>
+            <%= link_to "Show", recode_path(recode.id), class: "btn btn-success" %>
+            <%= link_to "Edit", edit_recode_path(recode.id), class: "btn btn-primary" %>
+            <%= link_to "Delete", recode_path(recode.id), class: "btn btn-danger" ,data:
+                { turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
+          </td>
+        </tr>
       </tbody>
     </div>
-  <% end %>
+<% end %>
 </table>

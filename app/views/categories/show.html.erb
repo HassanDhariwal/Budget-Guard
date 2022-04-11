@@ -1,0 +1,19 @@
+<h3>Account Recodes</h3>
+
+<table class="table table-success">
+  <thead class="table-dark">
+      <tr>
+         <th scope="col">Name</th>
+        <th scope="col">Action</th>
+      </tr>
+  </thead>
+
+  <tbody>
+     <td><%= @category.name %></td><td>
+       <%= link_to "Edit",edit_category_path(@category.id), class: "btn btn-primary" %>
+       <%= link_to "Delete", category_path(@category.id), class: "btn btn-danger" ,data: {
+           turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
+     </td>
+
+  </tbody>
+</table>

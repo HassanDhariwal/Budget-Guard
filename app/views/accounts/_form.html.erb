@@ -1,10 +1,10 @@
 
-<h1>acount</h1>
+<h1>acount _form</h1>
 <%= form_for  @account do |form| %>
 
   <div>
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, placeholder: "Name" %>
     <% @account.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -13,8 +13,8 @@
 
   <div>
     <%= form.label :account_type %><br>
-    <%= form.text_field :account_type %>
-    <% @account.errors.full_messages_for(:account_type).each do |message| %>
+    <%= form.text_field :account_type, placeholder: "Account Type" %>
+    <% @account.errors.full_messages_for(:accoun_type).each do |message| %>
       <div><%= message %></div>
     <% end %>
 
@@ -22,20 +22,14 @@
 
   <div>
     <%= form.label :starting_balance %><br>
-    <%= form.text_field :amount %>
-  </div>
-
-  <div>
-    <%= form.label :currency %><br>
-    <%= form.text_field :currency %>
+    <%= form.text_field :amount, placeholder: "Amount" %>
   </div>
 
   <div class="field form-group">
-      <%= form.number_field :user_id, id: :account_user_id,value:current_user.id, type: :hidden %>
-<!--    number_field add number counting -->
+    <%= form.number_field :user_id, id: :account_user_id,value:current_user.id, type: :hidden %>
+    <!--    number_field add number counting -->
   </div>
 
-  <div type="button" class="btn btn-success">
-    <%= form.submit %>
-  </div>
+  <button type="submit" class="btn btn-primary"><%= type %>Update Account </button>
+
 <% end %>
