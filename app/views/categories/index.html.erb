@@ -7,14 +7,15 @@
     <tr>
       <th scope="col" width='10%'>ID</th>
       <th scope="col" width='10%'>Name</th>
+      <th scope="col" width='10%'>USER ID</th>
       <th scope="col" width='10%'>Action</th>
-    </tr>
-  </thead>
+
 
   <% @categories.each do |category| %>
     <tbody>
       <td><%= category.id %></td>
       <td><%= category.name %></td>
+      <td><%= category.user_id %></td>
       <td>
         <%= link_to "Show", category_path(category.id), class: "btn btn-success" %>
         <%= link_to "Edit",edit_category_path(category.id), class: "btn btn-primary" %>
