@@ -1,5 +1,11 @@
 <h1>Recode</h1>
 <th><%= link_to "+ Add Recorde", new_recode_path, class: "btn btn-primary" %></th>
+<!--<div>-->
+<!--  <%#= form.label :choose_account %><br>-->
+  <%#= form.collection_select :account_id, @accounts.order(:name),:id,:name, include_blank: 'None'%>
+<!--</div>-->
+
+<%= select_tag 'account_id', options_for_select(@accounts.order(:name).collect{ |u| [u.name, u.id] }) %>
 
 <table class="table table-hover">
   <thead class="table table-active	">

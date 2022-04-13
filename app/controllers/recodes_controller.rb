@@ -1,6 +1,10 @@
 class RecodesController < ApplicationController
   def index
-    @recodes = Recode.all
+    @recodes = current_user.accounts.map{|account| account.recodes}.flatten
+    # [1, 2, [23, 25], [3, 6]]
+    # 3.0.0 :009 > a.flatten
+    # => [1, 2, 23, 25, 3, 6]
+    @accounts= current_user.accounts
   end
 
   def show
