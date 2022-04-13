@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
-    @categories = Category.all
+    @categories = current_user.categories
   end
 
   def show
@@ -25,6 +25,7 @@ class CategoriesController < ApplicationController
   end
   def edit
     @category = Category.find(params[:id])
+    @accounts = current_user.accounts
   end
 
   def update

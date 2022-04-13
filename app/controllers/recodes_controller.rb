@@ -11,7 +11,7 @@ class RecodesController < ApplicationController
   def new
     @recode = Recode.new
     @accounts = current_user.accounts
-    @categories = Category.all
+    @categories = current_user.categories
   #  @recode varibel hi used hoga na ky `recodes` form <%= form_with model: @recodes do |form| %>
   end
 
