@@ -12,8 +12,6 @@ class ArticlesController < ApplicationController
 
 
   def import
-
-  #   # binding.pry
   # render "articles/about"
   end
 

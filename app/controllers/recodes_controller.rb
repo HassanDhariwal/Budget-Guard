@@ -35,7 +35,7 @@ class RecodesController < ApplicationController
     @categories = Category.all
 
   end
-  # binding.pry
+
   def update
     recode = Recode.find(params[:id])
     if recode.update(recode_params)

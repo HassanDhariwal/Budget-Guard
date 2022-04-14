@@ -11,17 +11,14 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
-    # binding.pry
   end
 
   def create
-    # binding.pry
     @category = Category.new(category_params)
     if @category.save
       redirect_to @category
     else
       render :new, status: :unprocessable_entity
-      # binding.pry
     end
   end
   def edit

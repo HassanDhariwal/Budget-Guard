@@ -54,7 +54,7 @@ class AccountsController < ApplicationController
   def edit
       @account = Account.find(params[:id])
   end
-    # binding.pry
+
   def update
       account = Account.find(params[:id])
       if account.update(account_params)
