@@ -50,11 +50,13 @@
 <%= link_to "+ Add Recode", new_recode_path, class: "btn btn-primary" %>
 
 <h3>Import Recode</h3>
+
 <%= form_tag import_accounts_path, multipart: true do %>
 <%= file_field_tag :file %>
 <%= hidden_field_tag :account_id,@account.id %><br><br>
   <button type="submit" class="btn btn-primary"> +Import </button>
 <% end %>
+
 <br><br>
 <h3>Account Recodes</h3>
 

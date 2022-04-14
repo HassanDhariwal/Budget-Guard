@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   
   def index
-    
+    @account = Account.new
+
   end
   
   def about
@@ -11,9 +12,9 @@ class ArticlesController < ApplicationController
 
 
   def import
-  
-    # binding.pry 
-  render "articles/about"
+
+  #   # binding.pry
+  # render "articles/about"
   end
 
 end

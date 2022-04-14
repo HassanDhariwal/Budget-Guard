@@ -76,11 +76,22 @@ class AccountsController < ApplicationController
     @accounts = current_user.accounts
     account_id = params[:account_id]
 
+
     file = params[:file]
     csv = File.read(file)
 
     CSV.parse(csv, headers: true).each do |row|
+      des = row["Description"]
+      category_name = des.split[0..1].join(' ')
+      #split used for get two words
+      category = Category.where(name: category_name)
 
+      if category.blank?
+        Category.create(name: category_name, user_id: current_user.id)
+        category = Category.where(name: category_name)
+      end
+      category_id = category.first.id
+      #where
       recode_type = ""
       amount = 0
 
@@ -93,7 +104,7 @@ class AccountsController < ApplicationController
       end
 
       # row = Recode.new(date_time: row["Transaction"],note: row["Description"], amount: amount, account_id: account_id,recode_type: recode_type )
-      Recode.create(date_time: row["Transaction"],note: row["Description"], amount: amount, account_id: account_id,recode_type: recode_type )
+      Recode.create(date_time: row["Transaction"],note: row["Description"], amount: amount, account_id: account_id,category_id: category_id ,recode_type: recode_type )
       end
 
     # Record.new(asdfs,sdf, acount_id: account_id)

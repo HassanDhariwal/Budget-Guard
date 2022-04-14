@@ -1,12 +1,13 @@
-<h1>New Category</h1>
 
 <% @category.errors.full_messages_for(:name).each do |message| %>
   <div><%= message %></div>
 <% end %>
 
+<div class="row justify-content-center">
+  <div class="col-md-4 border rounded p-4 bg-success text-white shadow-lg">
 <%= form_for @category do |form| %>
-
-  <div>
+      <h5 class="lead text-center">New Category</h5>
+  <div class="form-group mt-3 mb-3">
     <%= form.label :name %><br>
     <%= form.text_field :name,placeholder: "Enter a Name "%>
   </div>
@@ -14,6 +15,9 @@
   <div>
     <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
   </div>
-
-  <button type="submit" class="btn btn-primary"><%= type %> Category</button>
+  <div class="text-center">
+    <button type="submit" class="btn btn-block mt-2 btn-outline-warning"><%= type %> Category</button>
+  </div>
 <% end %>
+  </div>
+</div>
