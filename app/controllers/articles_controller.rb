@@ -9,6 +9,10 @@ class ArticlesController < ApplicationController
   
   end
 
+  def new
+    @account = Account.new
+  end
+
 
 
   def import

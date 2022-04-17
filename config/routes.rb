@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # devise
   devise_for :users
   # Articels
-  get 'articles/about'
+  get 'articles/show'
   resources :articles do
   get 'import', :on => :collection
   end
