@@ -1,3 +1,6 @@
+<h1>Category</h1>
+
+
 <h1>Accounts List</h1>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +17,8 @@
 
 
   <style>
-    body{
-    }
+      body{
+      }
       .filter-result .job-box {
           -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
           box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
@@ -50,51 +53,56 @@
 </head>
 
 <body>
+
+
+
+
 <div class="container-fluid mt-3">
+
   <div class="row">
     <div class="col-md-2 border" style="height: 500px;">
 
       <h2 class="font-weight-bold mt-4">Account</h2>
 
       <button class="btn btn-success  btn-block  mt-4" style="border-radius:13px ;"> <i class="fas mr-1 py-2  p fa-plus"></i><%= link_to "Add account", new_account_path, class: 'text-white'%></button>
-
     </div>
+
     <div class="col-md-10">
-    <% @accounts.each do |account| %>
+      <% @categories.each do |category| %>
 
-      <div class="filter-result">
-        <div class="job-box d-md-flex align-items-center justify-content-between mb-3" >
-          <div class="job-left  d-md-flex align-items-center flex-wrap">
-            <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-              <i class="fas fa-wallet"></i>
+        <div class="filter-result">
+          <div class="job-box d-md-flex align-items-center justify-content-between mb-3" >
+            <div class="job-left  d-md-flex align-items-center flex-wrap">
+              <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                <i class="fas fa-wallet"></i>  UX
+              </div>
+              <h5 class="text-center text-md-left" style="font-size: 20px;"><%= category.name %> </h5>
             </div>
-            <h5 class="text-center text-md-left" style="font-size: 20px;"><%= account.name %></h5>
-          </div>
 
-          <div>
-            <p class="text-muted"><%= account.account_type %></p>
-          </div>
+            <div>
+              <p class="text-muted"><i class="fas fa-circle mr-2"></i><%= category.recodes.count %></p>
+            </div>
 
-          <div class=" d-flex">
-            <p><%= account.amount %></p>
+            <div class=" d-flex">
+              <p><%= category.recodes.count %></p>
               <div class="dropdown">
-              <i class='fa ml-2 fa-ellipsis-v' style="cursor: pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-            <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1">
-              <li><%= link_to "Show", account_path(account.id), class:"dropdown-item bg-success"%></li>
-              <li><%= link_to "Edit", edit_account_path(account.id), class:"dropdown-item bg-primary" %>
-                <%= link_to "Delete", account_path(account.id), class:"dropdown-item bg-danger" ,data: {
-                    turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %></li>
-            </ul>
+                <i class='fa ml-2 fa-ellipsis-v' style="cursor: pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu bg-dark"  aria-labelledby="dropdownMenuButton1">
+                  <li> <%= link_to "Show", category_path(category.id), class: "btn btn-block btn-outline-success" %></li>
+                  <li><%= link_to "Edit",edit_category_path(category.id), class: "btn btn-block btn-outline-primary" %></li>
+                  <li>  <%= link_to "Delete", category_path(category.id), class: "btn btn-block btn-outline-danger" ,data: {
+                      turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %></li>
+                </ul>
 
               </div>
+
+            </div>
 
           </div>
 
         </div>
 
-      </div>
-
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -111,7 +119,5 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-
 
 
