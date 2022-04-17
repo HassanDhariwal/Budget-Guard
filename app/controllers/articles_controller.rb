@@ -1,17 +1,22 @@
 class ArticlesController < ApplicationController
   
   def index
-    
+    @account = Account.new
+
   end
   
   def about
   
   end
 
+  def new
+    @account = Account.new
+  end
+
+
+
   def import
-  
-    # binding.pry 
-  render "articles/about"
+  # render "articles/about"
   end
 
 end

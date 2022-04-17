@@ -1,0 +1,42 @@
+<%= form_for  @recode do |form| %>
+  <div class="row justify-content-center">
+    <div class="col-md-4 border rounded p-4 bg-success text-white shadow-lg">
+      <h5 class="lead text-center">Add Recode</h5>
+      <div class="form-group mb-3" >
+        <%= form.radio_button :recode_type, 'income',:checked => true %>
+        <%= form.label :recode_type, 'income' %>
+        <%= form.radio_button :recode_type, 'expence' %>
+        <%= form.label :recode_type, 'expence' %>
+      </div>
+    </div>
+
+      <div class="form-group ">
+        <%= form.label :Account %><br>
+      <%= form.collection_select :account_id, @accounts.order(:name),:id,:name, include_blank: 'None'%>
+      </div>
+
+      <div class="form-group mt-3 mb-3">
+        <%= form.label :Category %><br>
+        <%= form.collection_select :category_id, @categories.order(:name),:id,:name, include_blank: 'None' %>
+      </div>
+
+      <div class="form-group mt-3 mb-3">
+        <%= form.label :amount %><br>
+        <%= form.text_field :amount, placeholder: "Amount" %>
+      </div>
+
+      <div class="form-group mt-3 mb-3">
+        <%= form.label :date_time %><br>
+        <%= form.datetime_field :date_time, placeholder: "Date Time" %>
+      </div>
+
+      <div class="form-group mt-3 mb-3">
+        <%= form.label :note %><br>
+        <%= form.text_field :note , placeholder: "Note" %>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-block mt-2 btn-outline-warning"> <%= type %> Recorde</button>
+      </div>
+<% end %>
+</div>
+</div>

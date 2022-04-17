@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_27_104057) do
+ActiveRecord::Schema.define(version: 2022_04_11_204400) do
 
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2022_03_27_104057) do
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "articles", charset: "utf8mb3", force: :cascade do |t|
@@ -27,6 +29,38 @@ ActiveRecord::Schema.define(version: 2022_03_27_104057) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories", charset: "utf8mb3", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "migrations", charset: "utf8mb3", force: :cascade do |t|
+    t.string "category"
+    t.text "food_drink"
+    t.text "shopping"
+    t.text "housing"
+    t.text "transportation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recodes", charset: "utf8mb3", force: :cascade do |t|
+    t.string "recode_type"
+    t.text "category"
+    t.integer "amount"
+    t.datetime "date_time", precision: 6
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "account_id"
+    t.integer "category_id"
+    t.index ["account_id"], name: "index_recodes_on_account_id"
+    t.index ["category_id"], name: "index_recodes_on_category_id"
   end
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|

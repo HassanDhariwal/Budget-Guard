@@ -1,0 +1,179 @@
+<h1>Recode</h1>
+
+<h1>Accounts List</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="css/Account.css">
+  <title>Bootstrap Theme</title>
+
+
+  <style>
+      body{
+      }
+      .filter-result .job-box {
+          -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+          box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+          border-radius: 10px;
+          padding: 10px 35px;
+      }
+
+
+      .job-box .img-holder {
+          height: 65px;
+          width: 65px;
+          background-color: #4e63d7;
+          background-image: -webkit-gradient(linear, left top, right top, from(rgba(78, 99, 215, 0.9)), to(#5a85dd));
+          background-image: linear-gradient(to right, rgba(78, 99, 215, 0.9) 0%, #5a85dd 100%);
+          font-family: "Open Sans", sans-serif;
+          color: #fff;
+          font-size: 22px;
+          font-weight: 700;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          border-radius: 65px;
+      }
+  </style>
+
+</head>
+
+<body>
+
+
+
+
+<div class="container-fluid mt-3">
+
+  <div class="row">
+    <div class="col-md-2 border" style="height: 500px;">
+
+      <h2 class="font-weight-bold mt-4">Account</h2>
+
+      <button class="btn btn-success  btn-block  mt-4" style="border-radius:13px ;"> <i class="fas mr-1 py-2  p fa-plus"></i><%= link_to "Add account", new_account_path, class: 'text-white'%></button>
+    </div>
+
+    <div class="col-md-10">
+      <% @recodes.each do |recode| %>
+        <span class="text-dark bg-light rounded-circle"><%= recode.date_time&.strftime('%B %e at %l:%M %p')%></span>
+        <div class="filter-result">
+          <div class="job-box d-md-flex align-items-center justify-content-between mb-3" >
+            <div class="job-left  d-md-flex align-items-center flex-wrap">
+              <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                <i class="fas fa-wallet"></i>  UX
+              </div>
+              <h5 class="text-center text-md-left" style="font-size: 20px;"><%= recode.recode_type %></h5>
+            </div>
+
+            <div>
+              <p class="text-muted"><i class="fas fa-circle mr-2"></i><%= recode.category_id %></p>
+            </div>
+
+            <div class=" d-flex">
+              <p><%= recode.amount %>`</p>
+              <div class="dropdown">
+                <i class='fa ml-2 fa-ellipsis-v' style="cursor: pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu bg-dark"  aria-labelledby="dropdownMenuButton1">
+                  <li><%= link_to "Show", recode_path(recode.id), class: "btn btn-block btn-outline-success" %></li>
+                  <li><%= link_to "Edit", edit_recode_path(recode.id), class: "btn btn-block  btn-outline-primary" %></li>
+                    <li>  <%= link_to "Delete", recode_path(recode.id), class: "btn btn-block  btn-outline-danger" ,data:
+                        { turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %></li>
+                </ul>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+////////////
+<th><%= link_to "+ Add Recorde", new_recode_path, class:"btn btn-block mt-2 btn-outline-primary" %></th>
+<br><!--<div>-->
+<br><!--<div>-->
+<!--  <%#= form.label :choose_account %><br>-->
+  <%#= form.collection_select :account_id, @accounts.order(:name),:id,:name, include_blank: 'None'%>
+<!--</div>-->
+
+<%= select_tag 'account_id', options_for_select(@accounts.order(:name).collect{ |u| [u.name, u.id] }) %>
+
+<table class="table table-hover">
+  <thead class="table table-active	">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Recode_type</th>
+    <th scope="col">Amount</th>
+    <th scope="col">Account</th>
+    <th scope="col">Category</th>
+    <th scope="col">Date Time</th>
+    <th scope="col">Note</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <% @recodes.each do |recode| %>
+    <div class="field">
+      <!--    <#= link_to account.name, account %>-->
+      <!--    #how to link href  -->
+      <tbody>
+        <tr>
+          <th scope="row"><%= recode.id  %></th>
+          <td><%= recode.recode_type %></td>
+          <td><%= recode.amount %></td>
+          <td><%= recode.account_id %></td>
+          <td><%= recode.category_id %></td>
+          <td><%= recode.date_time&.strftime('%B %e at %l:%M %p')%></td>
+          <td><%= recode.note %></td>
+        <!--      here we define account.id and bacause this provide to edit and delete -->
+          <td>
+            <%= link_to "Show", recode_path(recode.id), class: "btn btn-success" %>
+            <%= link_to "Edit", edit_recode_path(recode.id), class: "btn btn-primary" %>
+            <%= link_to "Delete", recode_path(recode.id), class: "btn btn-danger" ,data:
+                { turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
+          </td>
+        </tr>
+      </tbody>
+    </div>
+<% end %>
+</table>
