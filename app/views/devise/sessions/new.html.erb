@@ -1,4 +1,5 @@
-<body style="background-image: url('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg');background-repeat:no-repeat;background-size: cover">
+<% url = "https://cdn.pixabay.com/photo/2016/01/09/18/27/old-1130734_960_720.jpg" %>
+<body style="background-image: url(<%= url %>);background-repeat:no-repeat;background-size: cover">
 <div class="container">
 <div class="row d-flex justify-content-center">
   <div class="col-md-6 ">
@@ -6,7 +7,7 @@
 
 <%= form_for(resource, as: resource_name ,url: session_path(resource_name)) do |f| %>
 
-<div class="card mt-4 border shadow-lg text-white p-4 " style="background-color: #3b383d;border-radius: 20px;background: transparent">
+<div class="card mt-4 border shadow-lg text-black p-4 " style="">
   <div class="card-body">
     <h1>Sign in </h1>
 
@@ -27,7 +28,7 @@
     </div>
   <% end %>
 
-<%= f.submit :Login, class: 'actions btn btn-outline-light', data: { turbolinks: true } %>
+<%= f.submit :Login, class: 'actions btn btn-outline-dark', data: { turbolinks: true } %>
 
   </div>
 </div>
