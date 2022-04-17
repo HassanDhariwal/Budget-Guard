@@ -1,12 +1,25 @@
+<body style="background-image: url('https://cdn.pixabay.com/photo/2017/09/05/10/08/office-2717014_960_720.jpg');background-repeat:no-repeat;background-size: cover">
+<h3>Add Single Recode</h3>
+<%= link_to "+ Add Recode", new_recode_path,class:'actions btn btn-outline-dark' %>
+<br>
+<br>
+<h3>Import Recode</h3>
+
+<%= form_tag import_accounts_path, multipart: true do %>
+  <%= file_field_tag :file  %>
+  <%= hidden_field_tag :account_id,@account.id %><br><br>
+  <button type="submit" class='actions btn btn-outline-dark'> +Import </button>
+<% end %>
+
+<br><br>
 <h3>Account details</h3>
 <table class="table table-hover table-success">
   <thead class="table-dark">
   <tr>
-    <th scope="col">Name</th>
+    <th scope="col", class="form-label">Name</th>
     <th scope="col">Account Type</th>
     <th scope="col">Amount</th>
     <th scope="col">currency</th>
-    <th scope="col">Actions</th>
   </tr>
   </thead>
   <tbody>
@@ -15,11 +28,6 @@
     <td><%= @account.account_type%></td>
     <td><%= @account.amount%></td>
     <td><%= @account.currency%></td>
-    <td><%= link_to "Edit", edit_account_path(@account.id),  class: "btn btn-primary" %>
-<!--      patch for a specific line add, DELETE but there path is account-->
-      <%= link_to "Delete", account_path(@account.id),class: "btn btn-danger",data: {
-          turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
-    </td>
   </tr>
   </tbody>
 </table>
@@ -38,7 +46,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= @account_balance%></td>
+        <td ><%= @account_balance%></td>
         <td><%= @account.amount%></td>
         <td><%= @credit_amount%></td>
         <td><%= @debit_amount%></td>
@@ -46,18 +54,6 @@
     </tbody>
 </table>
 <br>
-<h3>Add Single Recode</h3>
-<%= link_to "+ Add Recode", new_recode_path, class: "btn btn-primary" %>
-
-<h3>Import Recode</h3>
-
-<%= form_tag import_accounts_path, multipart: true do %>
-<%= file_field_tag :file  %>
-<%= hidden_field_tag :account_id,@account.id %><br><br>
-  <button type="submit" class="btn btn-primary"> +Import </button>
-<% end %>
-
-<br><br>
 <h3>Account Recodes</h3>
 
 <table class="table table-success">
@@ -101,6 +97,7 @@
   <% end %>
   <% end %>
   </table>
+</body>
 
 
 
