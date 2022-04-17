@@ -68,7 +68,7 @@
           <div class="job-box d-md-flex align-items-center justify-content-between mb-3" >
             <div class="job-left  d-md-flex align-items-center flex-wrap">
               <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                <i class="fas fa-wallet"></i>  UX
+                <i class="fas fa-wallet"></i>
               </div>
               <h5 class="text-center text-md-left" style="font-size: 20px;"><%= recode.note %></h5>
             </div>
@@ -81,14 +81,20 @@
               <p class="text-muted"><%= recode.category.name %></p>
             </div>
 
+
+            <div>
+              <p class="text-muted"><%= recode.amount %></p>
+            </div>
+
+
+
             <div class=" d-flex">
-              <p><%= recode.amount %>`</p>
               <div class="dropdown">
                 <i class='fa ml-2 fa-ellipsis-v' style="cursor: pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                <ul class="dropdown-menu bg-dark"  aria-labelledby="dropdownMenuButton1">
-                  <li><%= link_to "Show", recode_path(recode.id), class: "btn btn-block btn-outline-success" %></li>
-                  <li><%= link_to "Edit", edit_recode_path(recode.id), class: "btn btn-block  btn-outline-primary" %></li>
-                    <li>  <%= link_to "Delete", recode_path(recode.id), class: "btn btn-block  btn-outline-danger" ,data:
+                <ul class="dropdown-menu"  aria-labelledby="dropdownMenuButton1">
+                  <li><%= link_to "Show", recode_path(recode.id) , class: "dropdown-item"%></li>
+                  <li><%= link_to "Edit", edit_recode_path(recode.id), class: "dropdown-item" %></li>
+                    <li>  <%= link_to "Delete", recode_path(recode.id), class: "dropdown-item" ,data:
                         { turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %></li>
                 </ul>
 

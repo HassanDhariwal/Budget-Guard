@@ -1,60 +1,147 @@
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true%>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
 <body style="background-image: url('https://cdn.pixabay.com/photo/2017/09/05/10/08/office-2717014_960_720.jpg');background-repeat:no-repeat;background-size: cover">
-<h3>Add Single Recode</h3>
-<%= link_to "+ Add Recode", new_recode_path,class:'actions btn btn-outline-dark' %>
-<br>
-<br>
-<h3>Import Recode</h3>
 
-<%= form_tag import_accounts_path, multipart: true do %>
-  <%= file_field_tag :file  %>
-  <%= hidden_field_tag :account_id,@account.id %><br><br>
-  <button type="submit" class='actions btn btn-outline-dark'> +Import </button>
-<% end %>
+<div class="container">
+  <div class="row">
 
-<br><br>
-<h3>Account details</h3>
-<table class="table table-hover table-success">
-  <thead class="table-dark">
-  <tr>
-    <th scope="col", class="form-label">Name</th>
-    <th scope="col">Account Type</th>
-    <th scope="col">Amount</th>
-    <th scope="col">currency</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td><%= @account.name%></td>
-    <td><%= @account.account_type%></td>
-    <td><%= @account.amount%></td>
-    <td><%= @account.currency%></td>
-  </tr>
-  </tbody>
-</table>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header bg-danger">Add Record</div>
+        <div class="card-body">
+          <%= link_to "+ Add Single Recode", new_recode_path,class:'actions btn btn-outline-dark' %>
+          <br>
+          <br>
+          <h3>Import Recode</h3>
+          <%= form_tag import_accounts_path, multipart: true do %>
+            <%= file_field_tag :file  %>
+            <%= hidden_field_tag :account_id,@account.id %><br><br>
+            <button type="submit" class='actions btn btn-outline-dark'> +Import </button>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-<h3>Balance details</h3>
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header bg-info">Account details</div>
+        <div class="card-body">
 
-<table class="table table-success">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Account balance</th>
-        <th scope="col">starting_balacne</th>
-        <th scope="col">income</th>
-        <th scope="col">expence</th>
+          <div class="row">
+          <div class="col">
+            <h5>Name: </h5>
+          </div>
+          <div class="col">
+            <h8> <%= @account.name%></h8>
+          </div>
+        </div>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td ><%= @account_balance%></td>
-        <td><%= @account.amount%></td>
-        <td><%= @credit_amount%></td>
-        <td><%= @debit_amount%></td>
-      </tr>
-    </tbody>
-</table>
-<br>
-<h3>Account Recodes</h3>
+          <div class="row">
+            <div class="col">
+              <h5>Account Type: </h5>
+            </div>
+            <div class="col">
+              <h8>  <%= @account.account_type%></h8>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h4>Amount:  </h4>
+            </div>
+            <div class="col">
+              <h8> <%= @account.amount%></h8>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h4>Name: </h4>
+            </div>
+            <div class="col">
+              <h8> <%= @account.name%></h8>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h4>currency: </h4>
+            </div>
+            <div class="col">
+              <h8> <%= @account.currency%></h8>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header bg-success">Balance details</div>
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col">
+              <h5>Account_balance: </h5>
+            </div>
+            <div class="col">
+              <h8> <%= @account_balance%></h8>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h5>starting_balacne: </h5>
+            </div>
+            <div class="col">
+              <h8> <%= @account.amount%></h8>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h5>income: </h5>
+            </div>
+            <div class="col">
+              <h8>  <%= @credit_amount%></h8>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h5>expence: </h5>
+            </div>
+            <div class="col">
+              <h8> <%= @debit_amount%></h8>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+a
+
+
+
+
+
+<h3 style="color: black"></h3>
+
+
+
+
+
+
+      <h3>Account Recodes</h3>
 
 <table class="table table-success">
   <thead class="table-dark">
