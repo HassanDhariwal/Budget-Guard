@@ -70,11 +70,15 @@
               <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
                 <i class="fas fa-wallet"></i>  UX
               </div>
-              <h5 class="text-center text-md-left" style="font-size: 20px;"><%= recode.recode_type %></h5>
+              <h5 class="text-center text-md-left" style="font-size: 20px;"><%= recode.note %></h5>
             </div>
 
             <div>
-              <p class="text-muted"><i class="fas fa-circle mr-2"></i><%= recode.category_id %></p>
+              <p class="text-muted"><i class="fas fa-circle mr-2"></i><%= recode.recode_type %></p>
+            </div>
+
+            <div>
+              <p class="text-muted"><%= recode.category.name %></p>
             </div>
 
             <div class=" d-flex">
