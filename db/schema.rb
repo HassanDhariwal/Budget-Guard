@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_11_204400) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_04_11_204400) do
   create_table "accounts", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "account_type"
     t.integer "amount"
     t.string "currency"
     t.string "color"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
@@ -27,36 +26,26 @@ ActiveRecord::Schema.define(version: 2022_04_11_204400) do
   create_table "articles", charset: "utf8mb3", force: :cascade do |t|
     t.string "title"
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.text "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_categories_on_user_id"
-  end
-
-  create_table "migrations", charset: "utf8mb3", force: :cascade do |t|
-    t.string "category"
-    t.text "food_drink"
-    t.text "shopping"
-    t.text "housing"
-    t.text "transportation"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "recodes", charset: "utf8mb3", force: :cascade do |t|
     t.string "recode_type"
     t.text "category"
     t.integer "amount"
-    t.datetime "date_time", precision: 6
+    t.datetime "date_time"
     t.text "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "account_id"
     t.integer "category_id"
     t.index ["account_id"], name: "index_recodes_on_account_id"
@@ -67,10 +56,10 @@ ActiveRecord::Schema.define(version: 2022_04_11_204400) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
