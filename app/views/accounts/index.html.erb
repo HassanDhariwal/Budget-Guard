@@ -1,4 +1,4 @@
-<h1>Accounts List</h1>
+<h1 style="text-align: center;">Accounts List</h1>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +56,9 @@
 
       <h2 class="font-weight-bold mt-4">Account</h2>
 
-      <button class="btn btn-success  btn-block  mt-4" style="border-radius:13px ;"> <i class="fas mr-1 py-2  p fa-plus"></i><%= link_to "Add account", new_account_path, class: 'text-white'%></button>
+      <button class="btn btn-success  btn-block  mt-4" style="border-radius:13px ;"> <i class="fas mr-1 py-2  p fa-plus"></i><%= link_to "Add Account", new_account_path, class: 'text-white'%></button>
+      <button class="btn btn-success  btn-block  mt-4" style="border-radius:13px ;"> <i class="fas mr-1 py-2  p fa-plus"></i><%= link_to "Add Recode", new_recode_path, class: 'text-white'%></button>
+      <button class="btn btn-success  btn-block  mt-4" style="border-radius:13px ;"> <i class="fas mr-1 py-2  p fa-plus"></i><%= link_to "Add Category", new_category_path, class: 'text-white'%></button>
 
     </div>
     <div class="col-md-10">
@@ -78,9 +80,9 @@
           <div class=" d-flex">
             <p><%= account.amount %></p>
  
-<!--               <div class="dropdown">
+              <div class="dropdown">
               <i class='fa ml-2 fa-ellipsis-v' style="cursor: pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
- -->
+
             <!-- <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1"> -->
               <!-- <li> -->
                 <%= link_to "Show", account_path(account.id), class:"dropdown-item bg-success"%>
@@ -94,7 +96,7 @@
                     <!-- </li> -->
               <!-- </ul> -->
 
-              <!-- </div> -->
+              </div>
 
           </div>
 
