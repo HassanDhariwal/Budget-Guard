@@ -77,16 +77,24 @@
 
           <div class=" d-flex">
             <p><%= account.amount %></p>
-              <div class="dropdown">
+ 
+<!--               <div class="dropdown">
               <i class='fa ml-2 fa-ellipsis-v' style="cursor: pointer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-            <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1">
-              <li><%= link_to "Show", account_path(account.id), class:"dropdown-item bg-success"%></li>
-              <li><%= link_to "Edit", edit_account_path(account.id), class:"dropdown-item bg-primary" %>
+ -->
+            <!-- <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1"> -->
+              <!-- <li> -->
+                <%= link_to "Show", account_path(account.id), class:"dropdown-item bg-success"%>
+                
+              <!-- </li> -->
+              <!-- <li> -->
+                <%= link_to "Edit", edit_account_path(account.id), class:"dropdown-item bg-primary" %>
                 <%= link_to "Delete", account_path(account.id), class:"dropdown-item bg-danger" ,data: {
-                    turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %></li>
-            </ul>
+                    turbo_method: :delete, turbo_confirm: "Are you sure?"}, :method => :delete %>
+                      
+                    <!-- </li> -->
+              <!-- </ul> -->
 
-              </div>
+              <!-- </div> -->
 
           </div>
 
